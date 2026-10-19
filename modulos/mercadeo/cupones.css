@@ -1,0 +1,131 @@
+.cupones-card {
+  max-width: 1374px;
+  margin: 24px auto;
+  padding: 24px 28px;
+  background: #ffffff;
+  border: 1px solid #e3e6dc;
+  border-radius: 20px;
+  color: #2f3a2f;
+}
+
+.cupones-card h2 {
+  margin: 0 0 20px;
+  font-size: 1.6rem;
+  color: #1f4d2b;
+}
+
+.cupones-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.cupones-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cupones-card input {
+  padding: 10px 12px;
+  border: 1px solid #cdd3c4;
+  border-radius: 10px;
+  font: inherit;
+  background: #ffffff;
+}
+
+.cupones-card input:focus {
+  outline: 2px solid #8cc63f;
+  border-color: #8cc63f;
+}
+
+.cupones-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.cupones-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cupones-filtro input {
+  min-width: 240px;
+}
+
+.cupones-card button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primario {
+  background: #6aa800;
+  color: #ffffff;
+}
+
+.btn-primario:hover {
+  background: #5a9000;
+}
+
+.btn-secundario {
+  background: #ffffff;
+  color: #1f4d2b;
+  border-color: #1f4d2b !important;
+}
+
+.btn-secundario:hover {
+  background: #eef4e6;
+}
+
+.btn-peligro {
+  background: #ffffff;
+  color: #b3261e;
+  border-color: #b3261e !important;
+}
+
+.btn-peligro:hover {
+  background: #fbeceb;
+}
+
+.cupones-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cupones-tabla th,
+.cupones-tabla td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e3e6dc;
+}
+
+.cupones-tabla th {
+  background: #eef4e6;
+  color: #1f4d2b;
+  font-size: 0.9rem;
+}
+
+.cupones-celda-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.cupones-celda-acciones button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.cupones-vacio {
+  margin-top: 16px;
+  color: #6b756b;
+}
