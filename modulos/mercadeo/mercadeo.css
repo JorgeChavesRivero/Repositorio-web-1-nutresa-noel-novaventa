@@ -1,0 +1,27 @@
+.banner-campana {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgb(253, 173, 24);
+    border-radius: 8px;
+    padding: 16px 24px;
+    background-color: #ffffff;
+    img{
+        width: 40px;
+        height: 60px;
+        background-color: #f5f0eb;
+        border-radius: 6px;
+    }
+    .texto-contenedor{
+        flex-grow: 1;
+    }
+    .boton-participar{
+        border: none;
+        color: #ffffff;
+        background-color: #e7895ef1;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
