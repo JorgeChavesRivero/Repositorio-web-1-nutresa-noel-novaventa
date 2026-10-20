@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sazón · Administrar recompensas (HU-05)</title>
+  <link rel="stylesheet" href="../../assets/css/sazon.css">
+  <link rel="stylesheet" href="AdminRecompensasHU5.css">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <div class="topbar">
+      <div class="contenedor topbar-interno">
+        <a class="marca" href="../../index.html">Sazón</a>
+        <nav class="navegacion" aria-label="Módulos">
+          <a href="../catalogo/index.html">Catálogo</a>
+          <a href="../recetario/index.html">Recetario</a>
+          <a href="../despensa/index.html">Despensa</a>
+          <a href="../nutricion/index.html">Nutrición</a>
+          <a href="../planificador/index.html">Planificador</a>
+          <a href="../comunidad/index.html">Comunidad</a>
+          <a class="activo" href="index.html" aria-current="page">Mercadeo</a>
+        </nav>
+        <div class="acciones">
+          <p class="rol-indicador">
+            <span class="rol-etiqueta">Rol:</span>
+            <strong class="rol-valor">Administrador</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor pagina-modulo">
+    <div class="encabezado-hu">
+      <p class="hero-etiqueta">Mercadeo · HU-05</p>
+      <h1>Administrar recompensas canjeables</h1>
+      <p class="texto-apoyo">Cree, edite y desactive las recompensas del catálogo de fidelización con su costo en puntos y sus existencias.</p>
+    </div>
+
+    <nav class="subnav" aria-label="Vistas de administración de recompensas">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#crear">Crear recompensa</a>
+      <a href="#editar">Editar recompensa</a>
+      <a href="#acceso-denegado">Ver como otro rol (403)</a>
+    </nav>
+
+    <!-- Vista: crear -->
+    <section id="crear" class="vista bloque-modulo" aria-labelledby="titulo-crear">
+      <h2 id="titulo-crear">Crear recompensa</h2>
+      <p class="texto-apoyo">Los campos marcados con <span class="obligatorio" aria-hidden="true">*</span> son obligatorios.</p>
+
+      <form class="formulario" method="get" action="#catalogo">
+        <div class="campo campo-ancho">
+          <label for="crear-nombre">Nombre <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="crear-nombre" name="nombre" type="text" maxlength="80" required placeholder="Ej. Pack Galletas Noel Festival">
+        </div>
+
+        <div class="campo campo-ancho">
+          <label for="crear-descripcion">Descripción <span class="obligatorio" aria-hidden="true">*</span></label>
+          <textarea id="crear-descripcion" name="descripcion" rows="3" maxlength="300" required placeholder="Describa qué incluye la recompensa y las condiciones de canje."></textarea>
+        </div>
+
+        <div class="campo">
+          <label for="crear-costo">Costo en puntos <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="crear-costo" name="costo" type="number" min="0" step="1" inputmode="numeric" required placeholder="350">
+        </div>
+
+        <div class="campo">
+          <label for="crear-existencias">Existencias <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="crear-existencias" name="existencias" type="number" min="0" step="1" inputmode="numeric" required placeholder="100">
+        </div>
+
+        <fieldset class="campo campo-ancho grupo-vigencia">
+          <legend>Vigencia <span class="obligatorio" aria-hidden="true">*</span></legend>
+          <div class="campo">
+            <label for="crear-inicio">Fecha de inicio</label>
+            <input id="crear-inicio" name="inicio" type="date" required>
+          </div>
+          <div class="campo">
+            <label for="crear-fin">Fecha de fin</label>
+            <input id="crear-fin" name="fin" type="date" required>
+          </div>
+        </fieldset>
+
+        <div class="acciones-formulario campo-ancho">
+          <button class="btn btn-primario" type="submit">Guardar recompensa</button>
+          <a class="btn btn-secundario" href="#catalogo">Cancelar</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- Vista: editar -->
+    <section id="editar" class="vista bloque-modulo" aria-labelledby="titulo-editar">
+      <h2 id="titulo-editar">Editar recompensa</h2>
+      <p class="texto-apoyo">Recompensa seleccionada: <strong>Kit Colcafé Cappuccino</strong></p>
+
+      <div class="aviso aviso-info" role="note">
+        <strong>Importante:</strong> al cambiar el costo en puntos, los canjes ya registrados conservan su costo original. El nuevo costo aplica solo a canjes futuros.
+      </div>
+
+      <form class="formulario" method="get" action="#catalogo">
+        <div class="campo campo-ancho">
+          <label for="editar-nombre">Nombre <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="editar-nombre" name="nombre" type="text" maxlength="80" required value="Kit Colcafé Cappuccino">
+        </div>
+
+        <div class="campo campo-ancho">
+          <label for="editar-descripcion">Descripción <span class="obligatorio" aria-hidden="true">*</span></label>
+          <textarea id="editar-descripcion" name="descripcion" rows="3" maxlength="300" required>Caja con 12 sobres de Colcafé Cappuccino clásico y vaso térmico de la campaña.</textarea>
+        </div>
+
+        <div class="campo">
+          <label for="editar-costo">Costo en puntos <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="editar-costo" name="costo" type="number" min="0" step="1" inputmode="numeric" required value="900" aria-describedby="ayuda-costo">
+          <small id="ayuda-costo">Costo anterior: 800 puntos.</small>
+        </div>
+
+        <div class="campo">
+          <label for="editar-existencias">Existencias <span class="obligatorio" aria-hidden="true">*</span></label>
+          <input id="editar-existencias" name="existencias" type="number" min="0" step="1" inputmode="numeric" required value="25">
+        </div>
+
+        <fieldset class="campo campo-ancho grupo-vigencia">
+          <legend>Vigencia <span class="obligatorio" aria-hidden="true">*</span></legend>
+          <div class="campo">
+            <label for="editar-inicio">Fecha de inicio</label>
+            <input id="editar-inicio" name="inicio" type="date" required value="2026-09-01">
+          </div>
+          <div class="campo">
+            <label for="editar-fin">Fecha de fin</label>
+            <input id="editar-fin" name="fin" type="date" required value="2026-12-31">
+          </div>
+        </fieldset>
+
+        <div class="acciones-formulario campo-ancho">
+          <button class="btn btn-primario" type="submit">Guardar cambios</button>
+          <a class="btn btn-secundario" href="#catalogo">Cancelar</a>
+        </div>
+      </form>
+
+      <h3 id="titulo-historial">Historial de canjes</h3>
+      <p class="texto-apoyo">El costo al canje no cambia aunque el costo actual de la recompensa se modifique.</p>
+      <div class="tabla-contenedor" role="region" aria-labelledby="titulo-historial" tabindex="0">
+        <table class="tabla">
+          <caption class="solo-lectores">Canjes registrados de Kit Colcafé Cappuccino</caption>
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Consultora</th>
+              <th scope="col" class="num">Costo al canje</th>
+              <th scope="col" class="num">Costo actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-etiqueta="Fecha"><time datetime="2026-09-08">08/09/2026</time></td>
+              <td data-etiqueta="Consultora">Luz Marina Ramírez</td>
+              <td data-etiqueta="Costo al canje" class="num">800 pts</td>
+              <td data-etiqueta="Costo actual" class="num">900 pts</td>
+            </tr>
+            <tr>
+              <td data-etiqueta="Fecha"><time datetime="2026-09-15">15/09/2026</time></td>
+              <td data-etiqueta="Consultora">Diana Carolina Muñoz</td>
+              <td data-etiqueta="Costo al canje" class="num">800 pts</td>
+              <td data-etiqueta="Costo actual" class="num">900 pts</td>
+            </tr>
+            <tr>
+              <td data-etiqueta="Fecha"><time datetime="2026-09-29">29/09/2026</time></td>
+              <td data-etiqueta="Consultora">Marta Elena Gómez</td>
+              <td data-etiqueta="Costo al canje" class="num">800 pts</td>
+              <td data-etiqueta="Costo actual" class="num">900 pts</td>
+            </tr>
+            <tr>
+              <td data-etiqueta="Fecha"><time datetime="2026-10-12">12/10/2026</time></td>
+              <td data-etiqueta="Consultora">Paola Andrea Restrepo</td>
+              <td data-etiqueta="Costo al canje" class="num">800 pts</td>
+              <td data-etiqueta="Costo actual" class="num">900 pts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Vista: acceso denegado -->
+    <section id="acceso-denegado" class="vista bloque-modulo vista-403" aria-labelledby="titulo-403">
+      <p class="codigo-error" aria-hidden="true">403</p>
+      <h2 id="titulo-403">Acceso denegado (403)</h2>
+      <p>Su rol actual es <strong>Consultora</strong>. Solo el rol <strong>Administrador</strong> puede crear, editar, desactivar o eliminar recompensas.</p>
+      <p class="texto-apoyo">Si cree que debería tener acceso, comuníquese con el equipo de Mercadeo.</p>
+      <div class="acciones-formulario">
+        <a class="btn btn-primario" href="../../index.html">Volver al inicio</a>
+        <a class="btn btn-secundario" href="#catalogo">Volver como administrador</a>
+      </div>
+    </section>
+
+    <!-- Vista: catálogo (vista por defecto; va al final para poder ocultarla con ~ cuando otra vista es :target) -->
+    <section id="catalogo" class="vista bloque-modulo" aria-labelledby="titulo-catalogo">
+      <div class="cabecera-seccion">
+        <h2 id="titulo-catalogo">Catálogo de recompensas</h2>
+        <a class="btn btn-primario" href="#crear">+ Crear recompensa</a>
+      </div>
+
+      <div class="tabla-contenedor" role="region" aria-labelledby="titulo-catalogo" tabindex="0">
+        <table class="tabla">
+          <caption class="solo-lectores">Recompensas canjeables con costo, existencias, estado y acciones</caption>
+          <thead>
+            <tr>
+              <th scope="col">Recompensa</th>
+              <th scope="col" class="num">Costo</th>
+              <th scope="col" class="num">Existencias</th>
+              <th scope="col" class="num">Canjes</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" data-etiqueta="Recompensa">Bono de mercado Novaventa $50.000</th>
+              <td data-etiqueta="Costo" class="num">1.200 pts</td>
+              <td data-etiqueta="Existencias" class="num">40</td>
+              <td data-etiqueta="Canjes" class="num">12</td>
+              <td data-etiqueta="Estado"><span class="estado estado-activo">Activo</span></td>
+              <td data-etiqueta="Acciones">
+                <div class="grupo-acciones">
+                  <a class="btn btn-secundario btn-chico" href="#editar">Editar</a>
+                  <button class="btn btn-aviso btn-chico" type="button">Desactivar</button>
+                  <button class="btn btn-peligro btn-chico" type="button" disabled aria-describedby="nota-bono">Eliminar</button>
+                </div>
+                <p id="nota-bono" class="nota-accion">No se puede eliminar: tiene 12 canjes registrados. Desactívela para retirarla del catálogo.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" data-etiqueta="Recompensa">Pack Galletas Noel Saltín (6 paquetes)</th>
+              <td data-etiqueta="Costo" class="num">350 pts</td>
+              <td data-etiqueta="Existencias" class="num">120</td>
+              <td data-etiqueta="Canjes" class="num">0</td>
+              <td data-etiqueta="Estado"><span class="estado estado-activo">Activo</span></td>
+              <td data-etiqueta="Acciones">
+                <div class="grupo-acciones">
+                  <a class="btn btn-secundario btn-chico" href="#editar">Editar</a>
+                  <button class="btn btn-aviso btn-chico" type="button">Desactivar</button>
+                  <button class="btn btn-peligro btn-chico" type="button">Eliminar</button>
+                </div>
+                <p class="nota-accion">Sin canjes: puede eliminarse.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" data-etiqueta="Recompensa">Kit Colcafé Cappuccino</th>
+              <td data-etiqueta="Costo" class="num">900 pts</td>
+              <td data-etiqueta="Existencias" class="num">25</td>
+              <td data-etiqueta="Canjes" class="num">4</td>
+              <td data-etiqueta="Estado"><span class="estado estado-activo">Activo</span></td>
+              <td data-etiqueta="Acciones">
+                <div class="grupo-acciones">
+                  <a class="btn btn-secundario btn-chico" href="#editar">Editar</a>
+                  <button class="btn btn-aviso btn-chico" type="button">Desactivar</button>
+                  <button class="btn btn-peligro btn-chico" type="button" disabled aria-describedby="nota-colcafe">Eliminar</button>
+                </div>
+                <p id="nota-colcafe" class="nota-accion">No se puede eliminar: tiene 4 canjes registrados. Desactívela para retirarla del catálogo.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" data-etiqueta="Recompensa">Chocolatinas Jet Navidad (caja x24)</th>
+              <td data-etiqueta="Costo" class="num">500 pts</td>
+              <td data-etiqueta="Existencias" class="num">0</td>
+              <td data-etiqueta="Canjes" class="num">8</td>
+              <td data-etiqueta="Estado"><span class="estado estado-inactivo">Inactivo</span></td>
+              <td data-etiqueta="Acciones">
+                <div class="grupo-acciones">
+                  <a class="btn btn-secundario btn-chico" href="#editar">Editar</a>
+                  <button class="btn btn-aviso btn-chico" type="button" disabled>Desactivar</button>
+                  <button class="btn btn-peligro btn-chico" type="button" disabled aria-describedby="nota-jet">Eliminar</button>
+                </div>
+                <p id="nota-jet" class="nota-accion">Ya está desactivada. No se puede eliminar: tiene 8 canjes registrados.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" data-etiqueta="Recompensa">Gorra Novaventa edición campaña</th>
+              <td data-etiqueta="Costo" class="num">200 pts</td>
+              <td data-etiqueta="Existencias" class="num">60</td>
+              <td data-etiqueta="Canjes" class="num">0</td>
+              <td data-etiqueta="Estado"><span class="estado estado-inactivo">Inactivo</span></td>
+              <td data-etiqueta="Acciones">
+                <div class="grupo-acciones">
+                  <a class="btn btn-secundario btn-chico" href="#editar">Editar</a>
+                  <button class="btn btn-aviso btn-chico" type="button" disabled>Desactivar</button>
+                  <button class="btn btn-peligro btn-chico" type="button">Eliminar</button>
+                </div>
+                <p class="nota-accion">Ya está desactivada. Sin canjes: puede eliminarse.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="contenedor">Proyecto Sazón · Front I · 2026</div>
+  </footer>
+</body>
+</html>
