@@ -1,24 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sazón · Mercadeo</title>
   <link rel="stylesheet" href="../../assets/css/sazon.css">
 </head>
+
 <body>
   <header data-layout="header"></header>
   <main class="contenedor pagina-modulo">
     <section class="bloque-modulo">
       <h1>Módulo Mercadeo</h1>
-      <p>Base lista para desarrollar historias de usuario de mercadeo.</p>
+      <p>Gestión de Cuentas de Fidelización (HU-01)</p>
       <div id="mercadeo-estado" class="mensaje-estado" role="status"></div>
+
+      <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+          <h3>Consultar y Gestionar</h3>
+          <div style="margin-bottom: 10px;">
+            <label>ID Usuario: </label>
+            <input type="number" id="inputUsuarioId" value="101" style="width: 80px;">
+            <button id="btnConsultar">Consultar</button>
+          </div>
+
+          <div id="tarjetaCuenta" style="display:none; padding: 10px; background: #eee; margin: 10px 0;">
+            <p><strong>Usuario:</strong> <span id="lblUsuario"></span></p>
+            <p><strong>Puntos:</strong> <span id="lblPuntos"></span></p>
+            <p><strong>Nivel:</strong> <span id="lblNivel"></span></p>
+          </div>
+
+          <div style="margin-top: 15px;">
+            <label>Cantidad Puntos: </label>
+            <input type="number" id="inputPuntos" placeholder="Ej: 100" style="width: 90px;">
+            <div style="margin-top: 8px;">
+              <button id="btnAcumular"
+                style="background:#2e7d32; color:#fff; border:none; padding:5px 10px;">Sumar</button>
+              <button id="btnRedimir"
+                style="background:#c62828; color:#fff; border:none; padding:5px 10px;">Redimir</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+          <h3>Lista General</h3>
+          <table style="width: 100%; text-align: left;">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Puntos</th>
+                <th>Nivel</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCuentasBody"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
   </main>
   <footer data-layout="footer"></footer>
+
   <script src="../../services/api.config.js"></script>
   <script src="../../assets/js/layout.js"></script>
   <script src="servicio.js"></script>
   <script src="index.js"></script>
 </body>
+
 </html>
+;
