@@ -1,0 +1,464 @@
+/* HU-05 · Administrar recompensas canjeables.
+   Complementa assets/css/sazon.css (no la modifica): solo lo que falta. */
+
+/* Accesibilidad */
+.salto-contenido {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  background: var(--verde-hondo);
+  color: #fff;
+  font-weight: 600;
+}
+
+.salto-contenido:focus-visible {
+  top: 0.5rem;
+}
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Header: indicador de rol */
+.rol-indicador {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--verde-hondo);
+  border-radius: 999px;
+  background: var(--verde-hondo);
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.rol-etiqueta {
+  color: #d8ecba;
+}
+
+/* Encabezado de la HU */
+.encabezado-hu .hero-etiqueta {
+  color: var(--verde-hondo);
+}
+
+.encabezado-hu h1 {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--tinta);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+}
+
+.texto-apoyo {
+  margin: 0.4rem 0 1rem;
+  color: #5b5e60;
+}
+
+/* Sub-navegación entre vistas */
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.subnav a {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--verde-hondo);
+}
+
+.subnav a:hover {
+  background: var(--crema-2);
+}
+
+/* Vista activa: por defecto catálogo; otra vista visible cuando es :target */
+.vista {
+  display: none;
+}
+
+.vista:target,
+#catalogo {
+  display: block;
+}
+
+.vista:target ~ #catalogo {
+  display: none;
+}
+
+/* Resalta el enlace de la vista activa (mejora progresiva con :has) */
+body:has(#catalogo:target) .subnav a[href="#catalogo"],
+body:not(:has(.vista:target)) .subnav a[href="#catalogo"],
+body:has(#crear:target) .subnav a[href="#crear"],
+body:has(#editar:target) .subnav a[href="#editar"],
+body:has(#acceso-denegado:target) .subnav a[href="#acceso-denegado"] {
+  background: var(--verde-hondo);
+  border-color: var(--verde-hondo);
+  color: #fff;
+}
+
+.vista h2,
+.vista h3 {
+  font-family: "Poppins", sans-serif;
+  color: var(--tinta);
+}
+
+.vista h2 {
+  margin: 0 0 0.25rem;
+}
+
+.vista h3 {
+  margin: 2rem 0 0.25rem;
+}
+
+.cabecera-seccion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Botones: variantes y estados */
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1.2;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primario:hover {
+  background: var(--verde);
+}
+
+.btn-secundario:hover {
+  background: var(--crema-2);
+}
+
+.btn-aviso {
+  border-color: #b7791f;
+  background: transparent;
+  color: #8a5a12;
+}
+
+.btn-aviso:hover {
+  background: #fdf3dc;
+}
+
+.btn-peligro {
+  border-color: var(--rojo);
+  background: transparent;
+  color: var(--rojo);
+}
+
+.btn-peligro:hover {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.btn-chico {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  border-color: var(--linea);
+  background: var(--crema-2);
+  color: var(--gris);
+  box-shadow: none;
+}
+
+.btn:disabled:hover {
+  background: var(--crema-2);
+  color: var(--gris);
+}
+
+/* Formularios */
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.campo-ancho {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo legend {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--tinta);
+}
+
+.campo small {
+  color: #5b5e60;
+}
+
+.obligatorio {
+  color: var(--rojo);
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--gris);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--texto);
+  font: inherit;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.campo input:hover,
+.campo textarea:hover {
+  border-color: var(--verde);
+}
+
+.campo input:focus-visible,
+.campo textarea:focus-visible {
+  border-color: var(--verde-hondo);
+  outline: 3px solid var(--teal);
+  outline-offset: 1px;
+}
+
+.campo input:user-invalid,
+.campo textarea:user-invalid {
+  border-color: var(--rojo);
+}
+
+.campo input:disabled,
+.campo textarea:disabled {
+  background: var(--crema-2);
+  color: var(--gris);
+  cursor: not-allowed;
+}
+
+.grupo-vigencia {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  padding: 0.75rem 1rem 1rem;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+}
+
+.grupo-vigencia legend {
+  padding: 0 0.4rem;
+}
+
+.acciones-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Avisos */
+.aviso {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #cfe3b8;
+  border-left-width: 5px;
+  border-radius: 10px;
+}
+
+.aviso-info {
+  border-color: var(--teal);
+  background: #eaf4f1;
+  color: var(--verde-noche);
+}
+
+/* Tablas */
+.tabla-contenedor {
+  overflow-x: auto;
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--linea);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla thead th {
+  background: var(--crema-2);
+  color: var(--tinta);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.tabla tbody tr:last-child th,
+.tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tabla tbody tr:hover {
+  background: #fbfbf3;
+}
+
+.tabla tbody th {
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.tabla .num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.estado {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.estado-activo {
+  background: #edf4e1;
+  color: var(--verde-noche);
+  border: 1px solid #cfe3b8;
+}
+
+.estado-inactivo {
+  background: var(--crema-2);
+  color: #5b5e60;
+  border: 1px solid var(--linea);
+}
+
+.grupo-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.nota-accion {
+  max-width: 28ch;
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  color: #5b5e60;
+}
+
+/* Vista 403 */
+.vista-403 {
+  text-align: center;
+}
+
+.codigo-error {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rojo);
+}
+
+.vista-403 .acciones-formulario {
+  justify-content: center;
+}
+
+/* Responsive: mismo breakpoint que sazon.css */
+@media (max-width: 900px) {
+  .formulario,
+  .grupo-vigencia {
+    grid-template-columns: 1fr;
+  }
+
+  .nota-accion {
+    max-width: none;
+  }
+
+  /* Tablas como tarjetas apiladas */
+  .tabla thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .tabla,
+  .tabla tbody,
+  .tabla tr,
+  .tabla th,
+  .tabla td {
+    display: block;
+  }
+
+  .tabla tbody tr {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .tabla th,
+  .tabla td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0.8rem;
+    border: 0;
+    text-align: right;
+  }
+
+  .tabla th::before,
+  .tabla td::before {
+    content: attr(data-etiqueta);
+    flex: none;
+    font-weight: 600;
+    color: var(--tinta);
+    text-align: left;
+  }
+
+  .tabla td[data-etiqueta="Acciones"] {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
