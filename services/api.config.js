@@ -1,6 +1,6 @@
 (function () {
   window.API_CONFIG = {
-    modo: "api",
+    modo: "local",
     baseUrl: "http://localhost:8080/api"
   };
 })();
